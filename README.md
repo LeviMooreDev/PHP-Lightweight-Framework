@@ -15,7 +15,7 @@ In the explanation below we are going to use an authentication package as exampl
 
 ## Setup
 ### Version
-First, you need to create a version file `packages/authentication/version.php` file that returns a string.
+First, you need to create a version file `packages/authentication/version.php`
 ```php
 return "1.0";
 ```
@@ -35,12 +35,12 @@ return [
     'database' => "any"
 ];
 ```
-If you need a specific version `1.2`.<br>
-If you need a minimum version `>1.2`.<br>
-If you dont care about what version `any`.<br>
+If you need a specific version `1.2`<br>
+If you need a minimum version `>1.2`<br>
+If you dont care about what version `any`<br>
 
 ### Configurable
-A way to communicate with other packages is to make your package configurable. Add `packages/authentication/configurable.php` with setting names and default values. More than one package can use the same name. If multiple packages talk to you this way the last package in `packages.php` decides.
+A way to communicate with other packages is to make your package configurable. Add `packages/authentication/configurable.php` with setting names and default values. More than one package can use the same name. If multiple packages talk to you this way the last package in `packages.php` decides. Authentication wants other packages to be able to tell if a page is not protected by login.
 ```php
 return [
     'protected' => true,
