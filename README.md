@@ -10,6 +10,8 @@ As I find and fix issues while working on new projects, old projects can just pu
 3. Fast prototyping.<br>
 For big systems and paid work I normally use Laravel, but for things like a ToDo app or when prototyping, a simple framework structure is better.<br><br>
 
+I have used and tested the framework on PHP version 7.4
+
 # Packages
 In the explanation below we are going to use an authentication package as example.
 
@@ -50,12 +52,34 @@ See [Page->Config](#config) about how to configure another package.
 <br>
 
 ## Pages
-### rounting.php
+Write something about pages.
+
+### Rounting
+Before you can add a page you need to add `packages/authentication/routing.php` to your package. Routing is about telling the framework what folders to use when a user visits a specific URL. I recommend placing your pages in a subfolder, but they can be placed anywhere inside your package. In our example, we want to add a login page with URL `yoursite.com/auth/login`. The page folder is `packages/authentication/pages/login`.
+```php
+return [
+    'auth/login' => "pages/login"
+];
+```
+
 ### head.php
+
 ### scripts.php
-### content.html
-### code.js
+### HTML/Layout
+The html content of the login page go in `packages/authentication/pages/login/content.html`. You can also add Javascript here but I recommend only using `content.html` for page layout.
+```html
+<form>
+	<input type="text" name="username" placeholder="username" required>
+	<input type="password" name="password" placeholder="password" required>
+	<input type="submit" value="Login">
+</form>
+```
+
+### Javascript
+If your page needs Javascript you should put it in `code.js`
+
 ### style.css
+
 ### Config
 <br>
 
