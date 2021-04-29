@@ -13,11 +13,9 @@ For big systems and paid work I normally use Laravel, but for things like a ToDo
 I have used and tested the framework on PHP version 7.4
 
 # Packages
-In the explanation below we are going to use an authentication package as example.
-
 ## Setup
 ### Version
-First, you need to create a version file `packages/authentication/version.php`
+First, you need to create a version file `packages/YOUR_PACKAGE/version.php`
 ```php
 return "1.0";
 ```
@@ -26,12 +24,12 @@ A version file is the minimum requirement for adding a package to the framework.
 Find `packages.php` and add package name (folder) as key and version as value.
 ```php
 return [
-    'authentication' => "1.0"
+    'YOUR_PACKAGE' => "1.0"
 ];
 ```
 
 ### Dependencies
-If you are dependent on another package add its name and version to `packages/authentication/dependencies.php`. In our example authentication needs the database package so it can store passwords.
+If you are dependent on another package add its name and version to `packages/YOUR_PACKAGE/dependencies.php`. If you package needs the databse package it would look like this.
 ```php
 return [
     'database' => "any"
@@ -42,7 +40,7 @@ If you need a minimum version `>1.2`<br>
 If you dont care about what version `any`<br>
 
 ### Configurable
-A way to communicate with other packages is to make your package configurable. Add `packages/authentication/configurable.php` with setting names and default values. More than one package can use the same name. If multiple packages talk to you this way the last package in `packages.php` decides. Authentication wants other packages to be able to tell if a page is not protected by login.
+A way to communicate with other packages is to make your package configurable. Add `packages/YOUR_PACKAGE/configurable.php` with setting names and default values. More than one package can use the same name. If multiple packages talk to you this way the last package in `packages.php` decides. If you are making an authentication package you may want to let pages tell if they are protected by login.
 ```php
 return [
     'protected' => true,
@@ -52,36 +50,33 @@ See [Page->Config](#config) about how to configure another package.
 <br>
 
 ## Pages
-Write something about pages.
-
 ### Rounting
-Before you can add a page you need to add `packages/authentication/routing.php` to your package. Routing is about telling the framework what folders to use when a user visits a specific URL. I recommend placing your pages in a subfolder, but they can be placed anywhere inside your package. In our example, we want to add a login page with URL `yoursite.com/auth/login`. The page folder is `packages/authentication/pages/login`.
+Before you can add a page you need to add `packages/YOUR_PACKAGE/routing.php` to your package. Routing is about telling the framework what folders to use when a user visits a specific URL. I recommend placing all your pages in a subfolder, but they can be placed anywhere inside your package. If you want to make a login page with URL `YOUR_WEBSITE.com/auth/login` that uses folder `packages/YOUR_PACKAGE/pages/login` it would look like this.
 ```php
 return [
     'auth/login' => "pages/login"
 ];
 ```
 
-### head.php
+### HTML Header
+If your page requires something to be set in the HTML header you can add it to `packages/YOUR_PACKAGE/pages/YOUR_PAGE_FOLDER/head.html`. You can also use `head.php`.
 
-### scripts.php
-### HTML/Layout
-The html content of the login page go in `packages/authentication/pages/login/content.html`. You can also add Javascript here but I recommend only using `content.html` for page layout.
-```html
-<form>
-	<input type="text" name="username" placeholder="username" required>
-	<input type="password" name="password" placeholder="password" required>
-	<input type="submit" value="Login">
-</form>
-```
+### HTML Body
+Your page HTML is placed in `packages/YOUR_PACKAGE/pages/YOUR_PAGE_FOLDER/content.html`. You can also add Javascript here but I recommend only using `content.html` for html. You can also use `content.php`.
 
 ### Javascript
-If your page needs Javascript you should put it in `code.js`
+Your page Javascript is placed in `packages/YOUR_PACKAGE/pages/YOUR_PAGE_FOLDER/code.js`.
 
-### style.css
+### Styling
+Your page css is placed in `packages/YOUR_PACKAGE/pages/YOUR_PAGE_FOLDER/style.css`.
 
 ### Config
-<br>
+Your page can talk with other packages using `packages/YOUR_PACKAGE/pages/YOUR_PAGE_FOLDER/config.php`. Let us say you have an authentication package that is configured to ignore all pages with protected set to false. If you want to add a login page that is ignored by the authentication package it would look like this.
+```php
+return [
+    'protected' => false
+];
+```
 
 ## Global
 ### start.php
