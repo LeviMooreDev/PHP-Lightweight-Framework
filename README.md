@@ -12,6 +12,13 @@ For big systems and paid work I normally use Laravel, but for things like a ToDo
 
 I have used and tested the framework on PHP version 7.4
 
+# Examples
+If you want to see some examples of packages I have a repository with most of the packages I have made.<br>[PHP Lightweight Framework Packages](https://github.com/LeviMooreDev/PHP-Lightweight-Framework-Packages).
+
+You can also have a look at a complete Todo app made using the framework.<br>[PHP ToDo Web App](https://github.com/LeviMooreDev/PHP-ToDo-Web-App).
+
+
+
 # Packages
 ## Setup
 ### Version
@@ -79,12 +86,26 @@ return [
 ```
 
 ## Global
+A package can contain global files that are added to all pages from all packages. Global files are placed in the root of your package folder.
+
 ### start.php
-### functions.php
-### head.php
-### scripts.php
-### pre-content.php
+Code inside `packages/YOUR_PACKAGE/start.php` is called before anything else when visiting a page.
+
+### Functions
+If you have functions that you want all packages to have access to, place them in `packages/YOUR_PACKAGE/functions.php`. This file should only contain functions. If you want your code to execute immediately use `start.php`
+
+### HTML Header
+If you want to add something to all page HTML headers you can use `packages/YOUR_PACKAGE/head.php`. This can be useful for things like a theme package.
+
+### Javascript
+If you want to add some Javascript to all pages you can use `packages/YOUR_PACKAGE/scripts.php`.
+
+### Before page content
+If you want to add HTML before a pages `content.php` file you can use `packages/YOUR_PACKAGE/pre-content.php`. Useful when making a theme package.
+
 ### post-content.php
+If you want to add HTML after a pages `content.php` file you can use `packages/YOUR_PACKAGE/post-content.php`. Useful when making a theme package.
+
 <br>
 
 <!-- LICENSE -->
