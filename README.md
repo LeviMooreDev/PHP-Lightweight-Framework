@@ -84,11 +84,12 @@ return [
     'protected' => false
 ];
 ```
+See [Setup->Configurable](#configurable) about how to make a package configurable.
 
 ## Global
 A package can contain global files that are added to all pages from all packages. Global files are placed in the root of your package folder.
 
-### start.php
+### Before Visiting Page
 Code inside `packages/YOUR_PACKAGE/start.php` is called before anything else when visiting a page.
 
 ### Functions
@@ -103,7 +104,7 @@ If you want to add some Javascript to all pages you can use `packages/YOUR_PACKA
 ### Before page content
 If you want to add HTML before a pages `content.php` file you can use `packages/YOUR_PACKAGE/pre-content.php`. Useful when making a theme package.
 
-### post-content.php
+### After page content
 If you want to add HTML after a pages `content.php` file you can use `packages/YOUR_PACKAGE/post-content.php`. Useful when making a theme package.
 
 <br>
