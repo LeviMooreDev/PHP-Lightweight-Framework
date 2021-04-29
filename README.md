@@ -111,7 +111,7 @@ If you want to add HTML after a pages `content.php` file you can use `packages/Y
 
 <!-- LICENSE -->
 ## License
-Distributed under the MIT License. See LICENSE for more information.<br>
+Distributed under the MIT License. See [LICENSE](https://github.com/LeviMooreDev/PHP-Lightweight-Framework/blob/master/LICENSE) for more information.<br>
 Some of the code has its own license. If the case the license is placed in the same folder with a matching name.
 
 <!-- CONTACT -->
